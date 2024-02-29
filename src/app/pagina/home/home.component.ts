@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { BuscadorPeliculasService } from '../../Services/api.service';
 import { CommonModule } from '@angular/common';
 import { timer } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -45,7 +46,6 @@ export class HomeComponent implements OnInit{
       this.bannnerApi = result.results;
     });
   }
-
 
 nextImage() {
   this.currentIndex = (this.currentIndex + 1) % this.bannnerApi.length;
