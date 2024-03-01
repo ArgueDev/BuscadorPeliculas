@@ -18,4 +18,9 @@ bannerApiData(): Observable<any> {
     const url = `https://api.themoviedb.org/3/discover/movie?api_key=${environment.apiKey}&page=${number}`;
     return this.http.get<any>(url);
   }
+
+  getSeries(number: number): Observable<any> {
+    const url = `https://api.themoviedb.org/3/discover/tv?api_key=${environment.apiKey}&page=${number}`;
+    return this.http.get<any>(url);
+  }
 }

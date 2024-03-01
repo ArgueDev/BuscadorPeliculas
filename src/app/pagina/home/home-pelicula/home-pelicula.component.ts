@@ -3,27 +3,28 @@ import { CommonModule } from '@angular/common';
 import { BuscadorPeliculasService } from '../../../Services/api.service';
 import { Params } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { PaginationComponent } from "../../pagination/pagination.component";
 
 @Component({
-  selector: 'app-home-pelicula',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './home-pelicula.component.html',
-  styleUrl: './home-pelicula.component.css'
+    selector: 'app-home-pelicula',
+    standalone: true,
+    templateUrl: './home-pelicula.component.html',
+    styleUrl: './home-pelicula.component.css',
+    imports: [CommonModule, PaginationComponent]
 })
 export class HomePeliculaComponent implements OnInit {
 
   movies: any[] = [];
   totalPages: number = 1;
   currentPage: number = 1;
-Math: any;
+  Math: any;
 
 
 
   constructor(private api: BuscadorPeliculasService) { }
 
   ngOnInit(): void{
-    this.getMovies(this.currentPage);
+    this.getMovies(this.currentPage); 
   }
 
   getMovies(pageNumber: number): void {
@@ -38,31 +39,5 @@ Math: any;
           console.error('Error fetching movies:', error);
         }
       );
-  }
-
-  nextPage() {
-    if (this.currentPage < this.totalPages) {
-    this.currentPage++;
-    this.getMovies(this.currentPage);
-    } 
-  }
-
-  prevPage() {
-    if (this.currentPage > 1) {
-      this.currentPage--;
-      this.getMovies(this.currentPage);
-    }
-  }
-
-  generatePageRange(): number[] {
-    const range = [];
-    const start = Math.max(1, this.currentPage - 2);
-    const end = Math.min(this.totalPages, start + 4); // Mostrar hasta 5 números de página
-
-    for (let i = start; i <= end; i++) {
-      range.push(i);
-    }
-
-    return range;
   }
 }
