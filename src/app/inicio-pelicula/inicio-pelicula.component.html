@@ -1,0 +1,14 @@
+
+<div class="col-md-4" *ngFor="let t of tendencias">
+    <div class="card">
+        <img class="card-img-top" src="https://image.tmdb.org/t/p/original/{{ t.backdrop_path || t.poster_path }}"
+            alt="Movie Poster">
+        <div class="card-body">
+            <h5 class="card-title">{{ t.name }}</h5>
+        </div>
+    </div>
+</div>
+
+
+
+

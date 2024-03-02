@@ -1,0 +1,20 @@
+
+  .carousel-inner {
+    text-align: center;
+    height: 60%; /* Asegura que la tarjeta ocupe todo el espacio disponible */
+    width: 60%; /* Asegura que la tarjeta ocupe todo el espacio disponible */
+    display: flex;
+    flex-direction: column; /* Alinea los elementos verticalmente */
+    justify-content: space-between;
+    margin: 0 auto;
+    margin-top: 20px;
+    
+  }
+ 
+  .d-block {
+    max-height: 100%; /* Establece un tamaño máximo para las imágenes */
+    object-fit: cover; /* Ajusta la imagen dentro del contenedor sin distorsionarla */
+    width: 100%;
+  }
+
+
