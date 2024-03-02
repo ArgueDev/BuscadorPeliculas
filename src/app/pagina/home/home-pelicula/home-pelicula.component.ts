@@ -31,7 +31,7 @@ export class HomePeliculaComponent implements OnInit {
     this.api.getMovies(pageNumber)
       .subscribe(
         (result: { results: any[], total_pages: number }) => { // Update the type of 'result' parameter
-          console.log(result, 'Movies');
+          console.log(result, 'Movies#');
           this.movies = result.results;
           this.totalPages = result.total_pages;
         },

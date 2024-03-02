@@ -1,1 +1,17 @@
-<p>series works!</p>
+    <div class="container">
+    <div class="row">
+        <div class="col-md-4" *ngFor="let serie of series">
+            <div class="card">
+                <img class="card-img-top" src="https://image.tmdb.org/t/p/original/{{ serie.backdrop_path || serie.poster_path }}"
+                    alt="Movie Poster">
+                <div class="card-body">
+                    <h5 class="card-title">{{ serie.name }}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pagination">
+        <app-pagination [totalPages]="totalPages" [currentPage]="currentPage" (pageChange)="getSeries($event)">
+        </app-pagination>
+    </div>
+</div>
