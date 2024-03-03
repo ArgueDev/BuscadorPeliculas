@@ -30,19 +30,27 @@ export class PaginationComponent {
 
     return range;
   }
-  changePage(pageNumber: number): void {
-    this.pageChange.emit(pageNumber);
+  changePage(page: number) {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+      this.pageChange.emit(this.currentPage);
+    }
   }
   
-  nextPage() {
+  
+  nextPage(event: Event): void {
+    event.preventDefault(); // Evita la recarga de la página
     if (this.currentPage < this.totalPages) {
-    this.currentPage++;
-    } 
+      this.currentPage++;
+      this.pageChange.emit(this.currentPage);
+    }
   }
 
-  prevPage() {
+  previousPage(event:Event): void {
+    event.preventDefault();
     if (this.currentPage > 1) {
       this.currentPage--;
+      this.pageChange.emit(this.currentPage);
     }
   }
 }

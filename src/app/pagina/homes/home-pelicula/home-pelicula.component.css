@@ -1,4 +1,4 @@
-.col-md-4 {
+  .col-md-4 {
     margin-top: 20px;
   }
 
@@ -11,9 +11,8 @@
     
   }
 
- 
   .card-img-top {
-    max-height: 200px; /* Establece un tamaño máximo para las imágenes */
+    max-height: 300px; /* Establece un tamaño máximo para las imágenes */
     object-fit: cover; /* Ajusta la imagen dentro del contenedor sin distorsionarla */
     width: 100%;
   }
@@ -25,4 +24,9 @@
     align-items: center; /* Centra la imagen verticalmente */
   }
 
+  .card-body {
+    flex: 1; /* Hace que el cuerpo de la tarjeta ocupe todo el espacio disponible */
+  }
 
+  
+  

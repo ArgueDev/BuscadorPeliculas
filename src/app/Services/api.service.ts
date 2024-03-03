@@ -15,17 +15,17 @@ bannerApiData(): Observable<any> {
   }
 
   getMovies(number: number): Observable<any> {
-    const url = `https://api.themoviedb.org/3/discover/movie?api_key=${environment.apiKey}&page=${number}`;
+    const url = `${environment.url}/discover/movie?api_key=${environment.apiKey}&page=${number}`;
     return this.http.get<any>(url);
   }
 
   getSeries(number: number): Observable<any> {
-    const url = `https://api.themoviedb.org/3/discover/tv?api_key=${environment.apiKey}&page=${number}`;
+    const url = `${environment.url}/discover/tv?api_key=${environment.apiKey}&page=${number}`;
     return this.http.get<any>(url);
   }
 
   tendencias(): Observable<any> {
-    const url = `https://api.themoviedb.org/3/trending/all/day?api_key=${environment.apiKey}`;
+    const url = `${environment.url}/trending/all/day?api_key=${environment.apiKey}`;
     return this.http.get<any>(url);
 
 

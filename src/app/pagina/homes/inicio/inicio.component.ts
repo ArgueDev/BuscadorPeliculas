@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { BuscadorPeliculasService } from '../../Services/api.service';
+import { BuscadorPeliculasService } from '../../../Services/api.service';
 import { CommonModule } from '@angular/common';
 import { timer } from 'rxjs';
 
