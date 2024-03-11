@@ -27,7 +27,11 @@ bannerApiData(): Observable<any> {
   tendencias(): Observable<any> {
     const url = `${environment.url}/trending/all/day?api_key=${environment.apiKey}`;
     return this.http.get<any>(url);
-
-
   }
+  trailers(id: number): Observable<any> {
+    const url = `${environment.url}/movie/${id}/videos?api_key=${environment.apiKey}`;
+    return this.http.get<any>(url);
+  }
+
+
 }

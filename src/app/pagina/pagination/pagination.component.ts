@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, Output } from '@angular/core';
 import { BuscadorPeliculasService } from '../../Services/api.service';
 import { Params } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -10,14 +10,17 @@ import { CommonModule } from '@angular/common';
   templateUrl: './pagination.component.html',
   styleUrl: './pagination.component.css'
 })
-export class PaginationComponent {
+export class PaginationComponent implements AfterViewInit{
   @Input() currentPage: number = 1;
   @Input() totalPages: number = 1;
 
   @Output() pageChange: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() { }
-
+  
+  ngAfterViewInit() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
   generatePageRange(): number[] {
     const range = [];
@@ -34,6 +37,7 @@ export class PaginationComponent {
     if (page >= 1 && page <= this.totalPages) {
       this.currentPage = page;
       this.pageChange.emit(this.currentPage);
+      window.scrollTo({ top: 0, behavior: 'smooth' }); // Esto hará un scroll suave
     }
   }
   
@@ -44,6 +48,8 @@ export class PaginationComponent {
       this.currentPage++;
       this.pageChange.emit(this.currentPage);
     }
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Esto hará un scroll suave
+
   }
 
   previousPage(event:Event): void {
@@ -52,5 +58,8 @@ export class PaginationComponent {
       this.currentPage--;
       this.pageChange.emit(this.currentPage);
     }
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Esto hará un scroll suave
+
   }
+
 }
