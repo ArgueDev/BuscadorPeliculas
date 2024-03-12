@@ -1,7 +1,4 @@
-.row{
-  margin-top: 20px;
 
-}
 .card {
   text-align: center;
   height: 100%;
@@ -18,6 +15,7 @@
   flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
+  margin-top: 20px;
 
 }
 

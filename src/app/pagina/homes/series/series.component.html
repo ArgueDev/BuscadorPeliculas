@@ -1,8 +1,8 @@
     <div class="container">
-    <div class="row">
-        <div class="col-md-4" *ngFor="let serie of series">
-            <div class="card">
-                <img class="card-img-top" src="https://image.tmdb.org/t/p/original/{{ serie.backdrop_path || serie.poster_path }}"
+    <div *ngFor="let row of chunk(series, itemsPerRow)" class="row">
+        <div class="col-md-3" *ngFor="let serie of row">
+            <div class="card" (click)="trailerSeries(serie.id)">
+                <img class="card-img-top" [src]="getSeriesImageUrl(serie)"
                     alt="Movie Poster">
                 <div class="card-body">
                     <h5 class="card-title">{{ serie.name }}</h5>
@@ -11,7 +11,7 @@
         </div>
     </div>
     <div class="pagination">
-        <app-pagination [totalPages]="totalPages" [currentPage]="currentPage" (pageChange)="getSeries($event)">
+        <app-pagination [totalPages]="totalPages" [currentPage]="currentPage" (pageChange)="changePage($event)">
         </app-pagination>
     </div>
 </div>

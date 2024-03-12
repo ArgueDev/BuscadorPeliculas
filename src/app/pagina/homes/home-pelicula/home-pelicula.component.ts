@@ -78,7 +78,7 @@ export class HomePeliculaComponent implements OnInit {
   }
 
   trailer(id: number) {
-    this.router.navigate(['/trailers', id]);
+    this.router.navigate(['trailersPeliculas', id]);
   }
 
 }

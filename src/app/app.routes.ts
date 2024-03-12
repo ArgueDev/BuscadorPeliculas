@@ -1,13 +1,15 @@
-import { HomePeliculaComponent } from './pagina/homes/home-pelicula/home-pelicula.component';
-import { SeriesComponent } from './pagina/homes/series/series.component';
 import { RouterModule, Routes } from '@angular/router';
-import { InicioComponent } from './pagina/homes/inicio/inicio.component';
 import { TrailersComponent } from './pagina/trailers/trailers.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'inicio', pathMatch: 'full'},
-    {path: 'inicio', component: InicioComponent},
-    {path: 'peliculas', component: HomePeliculaComponent},
-    {path: 'series', component: SeriesComponent},
-    {path: 'trailers/:id', component: TrailersComponent},
+    {path: 'inicio', loadComponent: () => import('./pagina/homes/inicio/inicio.component')
+    .then(m => m.InicioComponent)},
+    {path: 'peliculas', loadComponent: () => import('./pagina/homes/home-pelicula/home-pelicula.component')
+    .then(m => m.HomePeliculaComponent)},
+    {path: 'series', loadComponent: () => import('./pagina/homes/series/series.component')
+    .then(m => m.SeriesComponent)},
+    { path: 'trailersPeliculas/:id', component: TrailersComponent, data: { tipo: 'pelicula' } },
+    { path: 'trailersSeries/:id', component: TrailersComponent, data: { tipo: 'serie' } }
+
 ];

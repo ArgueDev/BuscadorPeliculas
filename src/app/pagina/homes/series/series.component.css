@@ -1,28 +1,32 @@
-.col-md-4 {
-    margin-top: 20px;
-  }
 
-  .card {
-    text-align: center;
-    height: 100%; /* Asegura que la tarjeta ocupe todo el espacio disponible */
-    display: flex;
-    flex-direction: column; /* Alinea los elementos verticalmente */
-    justify-content: space-between;
-    
-  }
+.card {
+  text-align: center;
+  height: 100%;
+  /* Asegura que la tarjeta ocupe todo el espacio disponible */
+  display: flex;
+  flex-direction: column;
+  /* Alinea los elementos verticalmente */
+  justify-content: space-between;
 
- 
-  .card-img-top {
-    max-height: 200px; /* Establece un tamaño máximo para las imágenes */
-    object-fit: cover; /* Ajusta la imagen dentro del contenedor sin distorsionarla */
-    width: 100%;
-  }
+}
 
-  .image-wrapper {
-    flex: 1; /* Hace que la imagen ocupe todo el espacio disponible */
-    display: flex;
-    justify-content: center; /* Centra la imagen horizontalmente */
-    align-items: center; /* Centra la imagen verticalmente */
-  }
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  margin-top: 20px;
 
+}
 
+.card-img-top {
+  width: 100%;
+  height: auto;
+  max-height: 200px; /* Establece un tamaño máximo para las imágenes */
+  object-fit: cover; /* Ajusta la imagen dentro del contenedor sin distorsionarla */
+  width: 100%;
+}
+
+.card-body {
+  width: 100%;
+}
