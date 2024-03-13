@@ -10,6 +10,7 @@ export const routes: Routes = [
     {path: 'series', loadComponent: () => import('./pagina/homes/series/series.component')
     .then(m => m.SeriesComponent)},
     { path: 'trailersPeliculas/:id', component: TrailersComponent, data: { tipo: 'pelicula' } },
-    { path: 'trailersSeries/:id', component: TrailersComponent, data: { tipo: 'serie' } }
-
+    { path: 'trailersSeries/:id', component: TrailersComponent, data: { tipo: 'serie' } },
+    { path: 'detallesPeliculas/:id', loadComponent: () => import('./pagina/detalles/detalles.component')
+    .then(m => m.DetallesComponent)},
 ];
