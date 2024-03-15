@@ -1,0 +1,10 @@
+.portada{
+    width: 250px;
+    margin-top: 30px;
+}
+
+.descripcion{
+    position: relative;
+    margin-left: 280px;
+    margin-top: -380px;
+}

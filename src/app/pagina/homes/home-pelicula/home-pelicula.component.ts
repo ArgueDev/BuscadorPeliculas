@@ -81,4 +81,8 @@ export class HomePeliculaComponent implements OnInit {
     this.router.navigate(['trailersPeliculas', id]);
   }
 
+  detalles(id: number) {
+    this.router.navigate(['detallesPeliculas', id]);
+  }
+
 }

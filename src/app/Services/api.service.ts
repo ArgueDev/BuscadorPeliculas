@@ -37,5 +37,14 @@ bannerApiData(): Observable<any> {
     return this.http.get<any>(url);
   }
 
+  getDetallesPelicula(id: number): Observable<any> {
+    const url = `${environment.url}/movie/${id}?api_key=${environment.apiKey}`;
+    return this.http.get<any>(url);
+  }
+
+  getDetallesSerie(id: number): Observable<any> {
+    const url = `${environment.url}/tv/${id}?api_key=${environment.apiKey}`;
+    return this.http.get<any>(url);
+  }
 
 }

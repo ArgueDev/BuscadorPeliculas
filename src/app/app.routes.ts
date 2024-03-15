@@ -1,5 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 import { TrailersComponent } from './pagina/trailers/trailers.component';
+import { DetallesComponent } from './pagina/detalles/detalles.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'inicio', pathMatch: 'full'},
@@ -11,6 +12,6 @@ export const routes: Routes = [
     .then(m => m.SeriesComponent)},
     { path: 'trailersPeliculas/:id', component: TrailersComponent, data: { tipo: 'pelicula' } },
     { path: 'trailersSeries/:id', component: TrailersComponent, data: { tipo: 'serie' } },
-    { path: 'detallesPeliculas/:id', loadComponent: () => import('./pagina/detalles/detalles.component')
-    .then(m => m.DetallesComponent)},
+    { path: 'detallesPeliculas/:id', component: DetallesComponent, data: { tipo: 'pelicula' } },
+    { path: 'detallesSeries/:id', component: DetallesComponent, data: { tipo: 'serie' } },
 ];

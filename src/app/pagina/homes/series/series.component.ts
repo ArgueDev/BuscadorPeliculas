@@ -73,4 +73,8 @@ export class SeriesComponent implements OnInit{
     this.router.navigate(['trailersSeries', id]);
   }
 
+  detallesSeries(id: number) {
+    this.router.navigate(['detallesSeries', id]);
+  }
+
 }

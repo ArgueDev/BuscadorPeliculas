@@ -1,7 +1,7 @@
 <div class="container">
   <div *ngFor="let row of chunk(movies, itemsPerRow)" class="row">
     <div class="col-md-3" *ngFor="let movie of row">
-      <div class="card" (click)="trailer(movie.id)">
+      <div class="card" (click)="detalles(movie.id)">
         <img class="card-img-top" [src]="getMovieImageUrl(movie)" alt="Movie Poster">
         <div class="card-body">
           <h5 class="card-title">{{ movie.title }}</h5>
