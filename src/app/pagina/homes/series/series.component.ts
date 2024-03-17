@@ -32,6 +32,7 @@ export class SeriesComponent implements OnInit{
           this.totalPages = result.total_pages;
           this.currentPage = pageNumber;
           this.preloadImages();
+          console.log(this.series,'series');
         },
         error => {
           console.error('Error fetching movies:', error);

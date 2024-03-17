@@ -1,9 +1,6 @@
-<div *ngIf="safeURL || mensajeNoVideo">
-  <div *ngIf="safeURL">
-      <iframe width="560" height="315" [src]="safeURL" title="YouTube video player" frameborder="0"
+  <iframe *ngIf="safeURL" width="560" height="315"  [src]="safeURL" title="YouTube video player" frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen></iframe>
-  </div>
   <div *ngIf="mensajeNoVideo">{{ mensajeNoVideo }}</div>
-</div>
-<h3>{{trailerKey[0].key}}</h3>
+
+

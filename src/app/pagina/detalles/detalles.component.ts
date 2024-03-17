@@ -3,6 +3,8 @@ import { BuscadorPeliculasService } from '../../Services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { TrailersComponent } from '../trailers/trailers.component';
 
 @Component({
   selector: 'app-detalles',
@@ -12,11 +14,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
   styleUrl: './detalles.component.css'
 })
 export class DetallesComponent implements OnInit {
+  mostrarAviso: boolean = true;
 
+  currentDialogRef: MatDialogRef<any> | undefined;
   detalle: any;
   detallesPeli: string = '';
   id: number | undefined;
-  constructor(private api: BuscadorPeliculasService, private router: ActivatedRoute) { }
+  constructor(private api: BuscadorPeliculasService, private router: ActivatedRoute, public dialog: MatDialog, private route: Router) { }
 
   ngOnInit(): void {
     this.Detalles();
@@ -42,7 +46,26 @@ export class DetallesComponent implements OnInit {
   }
 
 
+  openModal(): void {
+    this.mostrarAviso = false;
+    const dialogRef = this.dialog.open(TrailersComponent, {
+      width: 'auto',
+      height: 'auto',
+      autoFocus: false,
+      data: { id: this.detalle.id, tipo: this.router.snapshot.data['tipo'] } // Pasa la ID y el tipo al abrir el modal
+    });
+  }
+  
 
+  closeModal(): void {
+    // Cierra el modal si existe
+    if (this.currentDialogRef) {
+      this.currentDialogRef.close();
+      this.currentDialogRef = undefined; // Limpia la referencia
+    }
+  }
 
-
+  trailerSeries(id: number) {
+    this.route.navigate(['trailersPeliculas', id]);
+  }
 }
