@@ -1,32 +1,39 @@
-
+.container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 15px;
+}
 .card {
-  text-align: center;
-  height: 100%;
-  /* Asegura que la tarjeta ocupe todo el espacio disponible */
-  display: flex;
-  flex-direction: column;
-  /* Alinea los elementos verticalmente */
-  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+}
 
+.card:hover {
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+  max-width: 100%;
+  max-height: 400px;
+  min-height: 400px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.05);
 }
 
 .row {
   display: flex;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
-  margin-top: 20px;
-
+  margin: 0 -15px 20px;
 }
 
-.card-img-top {
-  width: 100%;
-  height: auto;
-  max-height: 200px; /* Establece un tamaño máximo para las imágenes */
-  object-fit: cover; /* Ajusta la imagen dentro del contenedor sin distorsionarla */
-  width: 100%;
-}
-
-.card-body {
-  width: 100%;
+.pagination {
+  display: flex;
+  justify-content: center;
 }

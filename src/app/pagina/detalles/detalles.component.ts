@@ -15,7 +15,7 @@ import { TrailersComponent } from '../trailers/trailers.component';
 })
 export class DetallesComponent implements OnInit {
   mostrarAviso: boolean = true;
-
+  detalleGenero: any;
   currentDialogRef: MatDialogRef<any> | undefined;
   detalle: any;
   detallesPeli: string = '';

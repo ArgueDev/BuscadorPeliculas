@@ -67,9 +67,8 @@ export class HomePeliculaComponent implements OnInit {
 
   getMovieImageUrl(movie: any): string {
     // Lógica para construir la URL de la imagen a partir de movie.backdrop_path o movie.poster_path
-    return `https://image.tmdb.org/t/p/original/${movie.backdrop_path || movie.poster_path}`;
+    return `https://image.tmdb.org/t/p/original/${movie.poster_path}`;
   }
-
 
   chunk(array: any[], size: number): any[][] {
     return Array.from({ length: Math.ceil(array.length / size) }, (_, index) =>

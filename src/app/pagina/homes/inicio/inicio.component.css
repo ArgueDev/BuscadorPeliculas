@@ -1,20 +1,108 @@
+.carousel-inner {
+  text-align: center;
+  height: 60%;
+  /* Asegura que la tarjeta ocupe todo el espacio disponible */
+  width: 60%;
+  /* Asegura que la tarjeta ocupe todo el espacio disponible */
+  display: flex;
+  flex-direction: column;
+  /* Alinea los elementos verticalmente */
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-top: 20px;
 
-  .carousel-inner {
-    text-align: center;
-    height: 60%; /* Asegura que la tarjeta ocupe todo el espacio disponible */
-    width: 60%; /* Asegura que la tarjeta ocupe todo el espacio disponible */
-    display: flex;
-    flex-direction: column; /* Alinea los elementos verticalmente */
-    justify-content: space-between;
-    margin: 0 auto;
-    margin-top: 20px;
-    
-  }
- 
-  .d-block {
-    max-height: 100%; /* Establece un tamaño máximo para las imágenes */
-    object-fit: cover; /* Ajusta la imagen dentro del contenedor sin distorsionarla */
-    width: 100%;
-  }
+}
 
+.d-block {
+  max-height: 100%;
+  max-width: 100%;
+  /* Establece un tamaño máximo para las imágenes */
+  object-fit: cover;
+  /* Ajusta la imagen dentro del contenedor sin distorsionarla */
+  width: 100%;
+}
 
+.imaPopular {
+  display: flex;
+  max-height: 300px;
+  max-width: 200px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  /* Establece una altura máxima para las imágenes */
+  /* Establece un ancho máximo para las imágenes */
+}
+
+.horizontal {
+  display: flex;
+  overflow-x: auto;
+  /* Permite el desplazamiento horizontal */
+  white-space: nowrap;
+  /* Evita que los elementos se rompan en varias líneas */
+  align-items: center;
+  /* Alinea los elementos verticalmente */
+  justify-content: space-between;
+  /* Distribuye los elementos horizontalmente */
+  padding: 10px;
+  /* Agrega un poco de espacio entre los elementos */
+  padding-top: 0px;
+}
+
+.imagen {
+  display: inline-block;
+  /* Hace que cada elemento sea un bloque en línea */
+  margin-right: 10px;
+  /* Agrega un poco de espacio entre las imágenes */
+}
+
+.Popular {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-bottom: 20px; /* Agrega espacio para el botón de desplazamiento */
+}
+
+.scroll-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px; /* Posición del botón */
+  z-index: 1; /* Asegura que esté sobre las imágenes */
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.scroll-button-left {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px; /* Posición del botón */
+  z-index: 1; /* Asegura que esté sobre las imágenes */
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+.arrow {
+  font-size: 32px; /* Tamaño del ícono */
+  color: #333; /* Color del ícono */
+  transition: transform 0.3s ease; /* Transición suave al girar */
+}
+
+.arrow:hover {
+  transform: rotate(90deg); /* Gira el ícono al pasar el mouse */
+}
+.proximamente{
+  display: flex;
+  margin-left: 50px;
+  margin-bottom: 0px;
+  margin-top: 20px;
+  font-weight: bold;
+  color: #333;
+}
+.tit-proximamente{
+  display: flex;
+
+}

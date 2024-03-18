@@ -3,10 +3,6 @@
     <div class="col-md-3" *ngFor="let movie of row">
       <div class="card" (click)="detalles(movie.id)">
         <img class="card-img-top" [src]="getMovieImageUrl(movie)" alt="Movie Poster">
-        <div class="card-body">
-          <h5 class="card-title">{{ movie.title }}</h5>
-          <!-- Otros detalles de la película si los deseas -->
-        </div>
       </div>
     </div>
   </div>

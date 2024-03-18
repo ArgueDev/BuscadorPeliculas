@@ -22,5 +22,22 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
+
 </div>
+<div class="Popular" style="width: 100%; overflow-x: auto;">
+  <div class="tit-proximamente"><h2 class="proximamente">Próximamente</h2>  </div>
+  <div class="horizontal" #container>
+    <ng-container *ngFor="let lisGenero of generos">
+    <div class="imagen" (click)="detallePelicula(lisGenero.id)">
+      <img class="imaPopular" src="https://image.tmdb.org/t/p/original/{{ lisGenero.poster_path }}" alt="">
+    </div>
+  </ng-container>
+  </div>
+  <button *ngIf="!isAtEnd" (click)="ScrollRight()" class="scroll-button">    
+    <span class="arrow">►</span>
+  </button>
+  <button *ngIf="!isAtStart" (click)="scrollLeft()" class="scroll-button-left">    
+    <span class="arrow">◄</span>
+  </button>
 </div>
+

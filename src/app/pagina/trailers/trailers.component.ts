@@ -36,9 +36,15 @@ export class TrailersComponent implements OnInit{
     if (this.movieId && tipo) {
       const apiCall = tipo === 'pelicula' ? this.api.trailers(this.movieId) : this.api.trailerSerie(this.movieId);
       apiCall.subscribe(response => {
-        this.trailerKey = response.results;
-        if (this.trailerKey.length > 0) {
-          this.setVideoIframe();
+        let ultimoTrailerKey = null;
+        for (let i = response.results.length - 1; i >= 0; i--) {
+          if (response.results[i].type === 'Trailer') {
+            ultimoTrailerKey = response.results[i].key;
+            break;
+          }
+        }
+        if (ultimoTrailerKey) {
+          this.setVideoIframe(ultimoTrailerKey);
         } else {
           this.mensajeNoVideo = 'Todavía no ha salido el tráiler para esta película o serie.';
         }
@@ -46,10 +52,9 @@ export class TrailersComponent implements OnInit{
     }
   }
 
-  private setVideoIframe(): void {
-    const primerDato = this.trailerKey[0].key;
+  private setVideoIframe(trailerKey: string): void {
     // Construir la URL del video de YouTube
-    const videoUrl = 'https://www.youtube.com/embed/' + primerDato + '?autoplay=1';
+    const videoUrl = 'https://www.youtube.com/embed/' + trailerKey + '?autoplay=1';
     // Sanitizar la URL para evitar problemas de seguridad
     this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl(videoUrl);
   }

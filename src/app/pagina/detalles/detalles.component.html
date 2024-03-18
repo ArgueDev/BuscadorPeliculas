@@ -1,4 +1,4 @@
-<div class="container" *ngIf = "detalle">
+<div class="container" *ngIf="detalle">
     <div class="portada">
         <img [src]="portadaPelicula()" alt="poster" class="img-fluid">
     </div>
@@ -7,7 +7,11 @@
         <p>{{detalle.overview}}</p>
         <p>Fecha de lanzamiento: {{detalle.release_date || detalle.first_air_date}}</p>
         <p>Calificación: {{detalle.vote_average.toFixed(1)}}</p>
-        <button (click)="openModal()">Trailer</button>
-        
+        <button class="openModal" (click)="openModal()">Trailer</button>
+    </div>
+    <div class="genero" >
+        <ul class="listaGenero" *ngFor="let detalleGenero of detalle.genres">
+            <li>{{detalleGenero.name}}</li>
+        </ul>
+    </div>
 </div>
-

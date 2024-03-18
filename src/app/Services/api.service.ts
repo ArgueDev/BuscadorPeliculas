@@ -47,4 +47,12 @@ bannerApiData(): Observable<any> {
     return this.http.get<any>(url);
   }
 
+  getPopular(): Observable<any> {
+    return this.http.get(`${environment.url}/movie/upcoming?api_key=${environment.apiKey}`);
+  }
+
+  getBusquedaPelicula(busqueda: string): Observable<any> {
+    const url = `${environment.url}/search/movie?api_key=${environment.apiKey}&query=${busqueda}`;
+    return this.http.get<any>(url);
+  }
 }
