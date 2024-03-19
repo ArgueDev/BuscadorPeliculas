@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { environment } from '../environment/environment';
 
 @Injectable({
@@ -55,4 +55,18 @@ bannerApiData(): Observable<any> {
     const url = `${environment.url}/search/movie?api_key=${environment.apiKey}&query=${busqueda}`;
     return this.http.get<any>(url);
   }
+
+  buscarSugerencias(busqueda: string): Observable<{ title: string, imageUrl: string }[]> {
+    const url = `${environment.url}/search/movie?api_key=${environment.apiKey}&query=${busqueda}`;
+    return this.http.get<any>(url).pipe(
+      map((response: any) => {
+        const movies = response.results || [];
+        return movies.map((movie: any) => ({ // Explicitly define the type of 'movie' parameter as 'any'
+          title: movie.title,
+          imageUrl: movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : '' // Construye la URL completa de la imagen si hay una disponible
+        }));
+      })
+    );
+  }
+
 }

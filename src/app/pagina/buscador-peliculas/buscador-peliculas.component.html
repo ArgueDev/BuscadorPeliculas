@@ -1,0 +1,15 @@
+<div class="container">
+    <h2>Resultados de búsqueda para "{{ term }}"</h2>
+    <div *ngIf="resultados && resultados.length > 0; else noResultados">
+        <div *ngFor="let resultado of resultados">
+            <div class="resultado">
+                <h3>{{ resultado.titulo }}</h3>
+                <p>{{ resultado.descripcion }}</p>
+                <!-- Aquí puedes mostrar más información sobre el resultado -->
+            </div>
+        </div>
+    </div>
+    <ng-template #noResultados>
+        <p>No se encontraron resultados para "{{ term }}".</p>
+    </ng-template>
+</div>

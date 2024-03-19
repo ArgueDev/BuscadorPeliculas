@@ -16,12 +16,22 @@
             <a class="nav-link" [routerLink]="['/series']">Series</a>
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        <div class="search-container">
+          <form class="d-flex align-items-start" role="search" (submit)="buscarPeliculas()">
+            <input class="form-control me-2" type="search" placeholder="Buscar películas" aria-label="Buscar películas"
+              [(ngModel)]="nombrePelicula" name="nombrePelicula" (input)="buscarAutocompletado()">
+            <ul class="list-group autocomplete-results" *ngIf="isOpen && (peliculasAutocompletado$ | async) as peliculas">
+              <li class="list-group-item" *ngFor="let pelicula of peliculas" (click)="seleccionarPelicula(pelicula)">
+                <img [src]="pelicula.imageUrl" alt="Imagen de la película" class="movie-image">
+                <span class="movie-title">{{ pelicula.title }}</span>
+              </li>
+            </ul>
+            <button class="btn btn-outline-success" type="submit" (click)="buscarPeliculas()">Buscar</button> <!-- Cierra las opciones de autocompletado al hacer clic en Buscar -->
+          </form>
+        </div>
+   
       </div>
     </div>
   </nav>
-  <router-outlet></router-outlet>
   
+  <router-outlet></router-outlet>
