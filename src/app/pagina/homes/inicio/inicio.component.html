@@ -1,43 +1,44 @@
 <div *ngIf="bannnerApi && bannnerApi.length > 0">
   <div class="carousel-inner">
-    <div class="carousel-item active"
-    *ngFor="let b of bannnerApi; let i=index" 
-    [class.active]="i === currentIndex"
-    >
+    <div class="carousel-item active" *ngFor="let b of bannnerApi; let i=index" [class.active]="i === currentIndex">
       <img src="https://image.tmdb.org/t/p/original/{{ b.backdrop_path }}" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h2>{{b.original_name || b.original_title}}</h2>
         <p class="parrafoPelicula">{{ truncatedOverview(b.overview, i) }}
-          <span class="read-more" *ngIf="isOverMaxLength(b.overview, i)" (mouseenter)="toggleOverview(i)" (mouseleave)="toggleOverview(i)">
+          <span class="read-more" *ngIf="isOverMaxLength(b.overview, i)" (mouseenter)="toggleOverview(i)"
+            (mouseleave)="toggleOverview(i)">
             Ver más
           </span>
         </p>
       </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev" (click)="prevImage()">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next" (click)="nextImage()">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-
-</div>
-<div class="Popular" style="width: 100%; overflow-x: auto;">
-  <div class="tit-proximamente"><h2 class="proximamente">Próximamente</h2>  </div>
-  <div class="horizontal" #container>
-    <ng-container *ngFor="let lisGenero of generos">
-    <div class="imagen" (click)="detallePelicula(lisGenero.id)">
-      <img class="imaPopular" src="https://image.tmdb.org/t/p/original/{{ lisGenero.poster_path }}" alt="">
     </div>
-  </ng-container>
-  </div>
-  <button *ngIf="!isAtEnd" (click)="ScrollRight()" class="scroll-button">    
-    <span class="arrow">►</span>
-  </button>
-  <button *ngIf="!isAtStart" (click)="scrollLeft()" class="scroll-button-left">    
-    <span class="arrow">◄</span>
-  </button>
-</div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev"
+      (click)="prevImage()">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next"
+      (click)="nextImage()">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
 
+  </div>
+  <div class="Popular" style="width: 100%; overflow-x: auto;">
+    <div class="tit-proximamente">
+      <h2 class="proximamente">Próximamente</h2>
+    </div>
+    <div class="horizontal" #container>
+      <ng-container *ngFor="let lisGenero of generos">
+        <div class="imagen" (click)="detallePelicula(lisGenero.id)">
+          <img class="imaPopular" src="https://image.tmdb.org/t/p/original/{{ lisGenero.poster_path }}" alt="">
+        </div>
+      </ng-container>
+    </div>
+    <button *ngIf="!isAtEnd" (click)="ScrollRight()" class="scroll-button">
+      <span class="arrow" style="color: #2EC82A">►</span>
+    </button>
+    <button *ngIf="!isAtStart" (click)="scrollLeft()" class="scroll-button-left">
+      <span class="arrow" style="color: #2EC82A">◄</span>
+    </button>
+  </div>

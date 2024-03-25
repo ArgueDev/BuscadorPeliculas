@@ -3,6 +3,7 @@ import { BuscadorPeliculasService } from '../../Services/api.service';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { NavigationComponent } from '../navigation/navigation.component';
 
 @Component({
   selector: 'app-buscador-peliculas',
@@ -11,26 +12,60 @@ import { Subscription } from 'rxjs';
   templateUrl: './buscador-peliculas.component.html',
   styleUrl: './buscador-peliculas.component.css'
 })
+
 export class BuscadorPeliculasComponent implements OnInit{
   
-  term: string = '';
+  tipo: any;
   resultados: any[] = [];
   private routeSub: Subscription = new Subscription();
+  detallesPelicula: any; // Objeto para almacenar los detalles de la película
+  idPelicula: any;
 
-  constructor(api: BuscadorPeliculasService, private route: ActivatedRoute) { }
+  constructor(private api: BuscadorPeliculasService, private route: ActivatedRoute, private nave: NavigationComponent) { }
 
   ngOnInit(): void {
+    this.obtenerPeliculaSerie();
+  }
+  
+  obtenerPeliculaSerie() {
     this.route.params.subscribe(params => {
-      this.term = params['term'];
-      // Utiliza this.term para buscar resultados relevantes y mostrarlos en la página
+      this.idPelicula = params['id'];
+      this.tipo = params['tipo'];
+      // Determinar el tipo de contenido y realizar acciones según sea necesario
+      if (this.tipo === 'movie') {
+        // Lógica específica para películas
+        this.obtenerDetallePelicula();
+      } else if (this.tipo === 'tv') {
+        // Lógica específica para series
+        this.obtenerDetalleSerie(); 
+      }
+    });
+    this.route.queryParams.subscribe(params => {
+      this.detallesPelicula = params['nombre'];
     });
   }
 
-ngOnDestroy() {
-  this.routeSub.unsubscribe();
-}
-buscarResultados(term: string) {
-  // Aquí puedes implementar la lógica para buscar resultados utilizando el término de búsqueda
-  // Llena la matriz 'resultados' con los resultados obtenidos
-}
-}
+  obtenerDetallePelicula() {
+    this.api.getDetallesPelicula(this.idPelicula).subscribe(
+      (data: any) => {
+        this.detallesPelicula = data;
+        // Aquí puedes asignar los detalles de la película a una variable para mostrar en la plantilla HTML
+      },
+      error => {
+        console.error('Error al obtener los detalles de la película:', error);
+      }
+    );
+  }
+
+  obtenerDetalleSerie() {
+    this.api.getDetallesSerie(this.idPelicula).subscribe(
+      (data: any) => {
+        this.detallesPelicula = data;
+        // Aquí puedes asignar los detalles de la película a una variable para mostrar en la plantilla HTML
+      },
+      error => {
+        console.error('Error al obtener los detalles de la película:', error);
+      }
+    );
+  }
+  }

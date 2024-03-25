@@ -51,22 +51,23 @@ bannerApiData(): Observable<any> {
     return this.http.get(`${environment.url}/movie/upcoming?api_key=${environment.apiKey}`);
   }
 
-  getBusquedaPelicula(busqueda: string): Observable<any> {
-    const url = `${environment.url}/search/movie?api_key=${environment.apiKey}&query=${busqueda}`;
-    return this.http.get<any>(url);
-  }
-
-  buscarSugerencias(busqueda: string): Observable<{ title: string, imageUrl: string }[]> {
-    const url = `${environment.url}/search/movie?api_key=${environment.apiKey}&query=${busqueda}`;
+  buscarSugerencias(busqueda: string): Observable<{ title: string, imageUrl: string, id: number, tipo: string }[]> {
+    const url = `${environment.url}/search/multi?api_key=${environment.apiKey}&query=${busqueda}`;
     return this.http.get<any>(url).pipe(
       map((response: any) => {
         const movies = response.results || [];
-        return movies.map((movie: any) => ({ // Explicitly define the type of 'movie' parameter as 'any'
-          title: movie.title,
-          imageUrl: movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : '' // Construye la URL completa de la imagen si hay una disponible
+        return movies.map((movie: any) => ({ // Explicar explícitamente el tipo del parámetro 'movie' como 'any'
+          id: movie.id,
+          title: movie.title || movie.name || movie.original_name,
+          imageUrl: movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : '', // Construye la URL completa de la imagen si está disponible
+          tipo: movie.media_type // Agrega el tipo de contenido al resultado
         }));
       })
     );
   }
-
+  getDetalle(id: number, mediaType: string): Observable<any> {
+    const tipo = mediaType === 'tv' ? 'tv' : 'movie'; // Determinar si el contenido es una película o una serie
+    const url = `${environment.url}/${tipo}/${id}?api_key=${environment.apiKey}`;
+    return this.http.get<any>(url);
+  }
 }

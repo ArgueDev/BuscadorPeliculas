@@ -15,12 +15,14 @@ import { BuscadorPeliculasComponent } from '../buscador-peliculas/buscador-pelic
     imports: [RouterModule, FormsModule, CommonModule, BuscadorPeliculasComponent]
 })
 export class NavigationComponent {
+  id: number = 0;
+  tipo: string = '';
   nombrePelicula: string = '';
-  peliculasAutocompletado$: Observable<{ title: string, imageUrl: string }[]>;
+  peliculasAutocompletado$: Observable<{ title: string, imageUrl: string, id: number, tipo: string }[]>;
   searchTerms = new Subject<string>();
   isOpen: boolean = false;
-   ngUnsubscribe = new Subject<void>();
-   peliculaSeleccionada: { title: string, imageUrl: string } = { title: '', imageUrl: '' };
+  ngUnsubscribe = new Subject<void>();
+  peliculaSeleccionada: { title: string, imageUrl: string, id: number, tipo: string } = { title: '', imageUrl: '', id: 0, tipo: ''};
 
   constructor(private api: BuscadorPeliculasService, private router: Router, private elementRef: ElementRef) {
     this.peliculasAutocompletado$ = this.searchTerms.pipe(
@@ -40,9 +42,15 @@ export class NavigationComponent {
 
   buscarPeliculas(): void {
     if (this.nombrePelicula.trim() !== '') {
-      this.router.navigate(['buscador'], { queryParams: { nombre: this.nombrePelicula } });
-      this.isOpen = false;
+      let ruta: string;
+      if (this.tipo === 'tv') {
+        ruta = `/detalle/${this.tipo}/${this.id}`;
+      } else {
+        ruta = `/detalle/${this.tipo}/${this.id}`;
+      }
 
+      this.router.navigate([ruta], { queryParams: { nombre: this.nombrePelicula } });
+      this.isOpen = false;
     }
   }
 
@@ -51,11 +59,17 @@ export class NavigationComponent {
     this.isOpen = true;
     console.log(this.nombrePelicula);
   }
-  seleccionarPelicula(pelicula: { title: string, imageUrl: string }): void {
+
+  seleccionarPelicula(pelicula: { title: string, imageUrl: string, id: number, tipo: string }): void {
     this.nombrePelicula = pelicula.title;
+    this.id = pelicula.id;
+    this.tipo = pelicula.tipo;
+    const rutaDetalles = `/detalles/${pelicula.id}`;
+    this.router.navigate([rutaDetalles], { queryParams: { tipo: pelicula.tipo } });
     this.buscarPeliculas();
     this.isOpen = false;
   }
+  
 
   @HostListener('document:click', ['$event'])
   handleOutsideClick(event: Event): void {

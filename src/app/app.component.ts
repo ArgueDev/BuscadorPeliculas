@@ -13,5 +13,5 @@ import { InicioComponent } from './pagina/homes/inicio/inicio.component';
     imports: [RouterOutlet, NavigationComponent, HomePeliculaComponent, SeriesComponent, InicioComponent]
 })
 export class AppComponent {
-  title = 'TrailerPeliculas';
+  title = 'TrailersApp';
 }

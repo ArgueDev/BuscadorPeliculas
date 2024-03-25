@@ -1,15 +1,11 @@
-<div class="container">
-    <h2>Resultados de búsqueda para "{{ term }}"</h2>
-    <div *ngIf="resultados && resultados.length > 0; else noResultados">
-        <div *ngFor="let resultado of resultados">
-            <div class="resultado">
-                <h3>{{ resultado.titulo }}</h3>
-                <p>{{ resultado.descripcion }}</p>
-                <!-- Aquí puedes mostrar más información sobre el resultado -->
-            </div>
-        </div>
-    </div>
-    <ng-template #noResultados>
-        <p>No se encontraron resultados para "{{ term }}".</p>
-    </ng-template>
-</div>
+<div *ngIf="detallesPelicula">
+    <h2>{{ detallesPelicula.title || detallesPelicula.name }}</h2>
+    <img [src]="detallesPelicula.imageUrl" alt="{{ detallesPelicula.title }}" width="200">
+    <p><strong>Descripción:</strong> {{ detallesPelicula.overview }}</p>
+    <p><strong>Fecha de lanzamiento:</strong> {{ detallesPelicula.release_date }}</p>
+    <p><strong>Calificación:</strong> {{ detallesPelicula.vote_average }}</p>
+  </div>
+  <div *ngIf="!detallesPelicula">
+    <p> Cargando detalles de la película... </p>
+  </div>
+  

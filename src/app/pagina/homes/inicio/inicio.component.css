@@ -1,3 +1,4 @@
+
 .carousel-inner {
   text-align: center;
   height: 60%;
@@ -52,6 +53,11 @@
   /* Hace que cada elemento sea un bloque en línea */
   margin-right: 10px;
   /* Agrega un poco de espacio entre las imágenes */
+}
+
+.proximamente{
+  color: #ffffff !important;
+
 }
 
 .Popular {

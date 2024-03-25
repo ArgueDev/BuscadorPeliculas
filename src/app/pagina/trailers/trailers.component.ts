@@ -18,6 +18,7 @@ export class TrailersComponent implements OnInit{
   movieId: number | undefined;
   safeURL: SafeResourceUrl | undefined;
   mensajeNoVideo: string = '';
+  videoUrl: any;
 
   constructor(private api: BuscadorPeliculasService, private route: ActivatedRoute, 
     private sanitizer: DomSanitizer, private dialogRef: MatDialog, @Inject(MAT_DIALOG_DATA) public data: any
@@ -30,7 +31,6 @@ export class TrailersComponent implements OnInit{
       this.getTrailer(this.data.tipo); // Pasa el tipo de contenido a la función getTrailer
     }
   }
-
 
   private getTrailer(tipo: string): void {
     if (this.movieId && tipo) {
@@ -54,9 +54,9 @@ export class TrailersComponent implements OnInit{
 
   private setVideoIframe(trailerKey: string): void {
     // Construir la URL del video de YouTube
-    const videoUrl = 'https://www.youtube.com/embed/' + trailerKey + '?autoplay=1';
+    this.videoUrl = 'https://www.youtube.com/embed/' + trailerKey + '?autoplay=1';
     // Sanitizar la URL para evitar problemas de seguridad
-    this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl(videoUrl);
+    this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl(this.videoUrl);
   }
   
 }
