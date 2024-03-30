@@ -25,10 +25,7 @@
                   <img [src]="pelicula.imageUrl" alt="Imagen de la película" class="movie-image">
                   <span class="movie-title">{{ pelicula.title }}</span>
                 </li>
-              </ul>
-              
-              
-            <button class="btn btn-outline-success" type="submit" (click)="buscarPeliculas()">Buscar</button> <!-- Cierra las opciones de autocompletado al hacer clic en Buscar -->
+              </ul>     
           </form>
         </div>
    
@@ -36,4 +33,5 @@
     </div>
   </nav>
   
+ 
   <router-outlet></router-outlet>

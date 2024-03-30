@@ -1,3 +1,9 @@
+nav.navbar{
+  position: relative;
+  z-index: 2; /* Asegura que el navbar esté sobre el carousel */
+
+  background-color: transparent !important; /* Fondo transparente */
+}
 .search-container {
     position: relative; /* Contenedor común con posición relativa */
   }
@@ -35,4 +41,11 @@
   .movie-image {
     margin-right: 10px; /* Ajusta el margen entre la imagen y el texto */
   }
-  
+  a{
+    color: #ffffff !important;
+  }
+
+  .form-control::placeholder, .form-control{
+    color: #7c7c7c !important;
+    background-color: transparent !important;
+  }

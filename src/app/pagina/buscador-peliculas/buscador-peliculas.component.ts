@@ -68,4 +68,7 @@ export class BuscadorPeliculasComponent implements OnInit{
       }
     );
   }
+  portadaPelicula(): string {
+    return `https://image.tmdb.org/t/p/original${this.detallesPelicula.poster_path}`;
+  }
   }

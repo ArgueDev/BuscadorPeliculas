@@ -45,6 +45,9 @@ export class DetallesComponent implements OnInit {
     return `https://image.tmdb.org/t/p/original${this.detalle.poster_path}`;
   }
 
+  fondoPelicula(): string {
+    return `https://image.tmdb.org/t/p/original${this.detalle.backdrop_path}`;
+  }
 
   openModal(): void {
     this.mostrarAviso = false;

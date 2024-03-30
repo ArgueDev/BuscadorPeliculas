@@ -1,6 +1,6 @@
-<div *ngIf="detallesPelicula">
+<div class="detalles" *ngIf="detallesPelicula">
     <h2>{{ detallesPelicula.title || detallesPelicula.name }}</h2>
-    <img [src]="detallesPelicula.imageUrl" alt="{{ detallesPelicula.title }}" width="200">
+    <img [src]="portadaPelicula()" alt="" width="200">
     <p><strong>Descripción:</strong> {{ detallesPelicula.overview }}</p>
     <p><strong>Fecha de lanzamiento:</strong> {{ detallesPelicula.release_date }}</p>
     <p><strong>Calificación:</strong> {{ detallesPelicula.vote_average }}</p>

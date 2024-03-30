@@ -4,6 +4,7 @@ import { HomePeliculaComponent } from './pagina/homes/home-pelicula/home-pelicul
 import { NavigationComponent } from "./pagina/navigation/navigation.component";
 import { SeriesComponent } from "./pagina/homes/series/series.component";
 import { InicioComponent } from './pagina/homes/inicio/inicio.component';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
     selector: 'app-root',

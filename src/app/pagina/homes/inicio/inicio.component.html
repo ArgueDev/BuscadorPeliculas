@@ -1,5 +1,5 @@
-<div *ngIf="bannnerApi && bannnerApi.length > 0">
-  <div class="carousel-inner">
+
+  <div class="carousel-inner" *ngIf="bannnerApi && bannnerApi.length > 0">
     <div class="carousel-item active" *ngFor="let b of bannnerApi; let i=index" [class.active]="i === currentIndex">
       <img src="https://image.tmdb.org/t/p/original/{{ b.backdrop_path }}" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
@@ -22,8 +22,9 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
-
+    <div class="gradient-overlay"></div>
   </div>
+
   <div class="Popular" style="width: 100%; overflow-x: auto;">
     <div class="tit-proximamente">
       <h2 class="proximamente">Próximamente</h2>

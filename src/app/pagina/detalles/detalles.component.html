@@ -3,15 +3,18 @@
         <img [src]="portadaPelicula()" alt="poster" class="img-fluid">
     </div>
     <div class="descripcion">
-        <h3>{{detalle.title || detalle.original_name}}</h3>
+        <h3><b>{{detalle.title || detalle.original_name}}</b></h3>
         <p>{{detalle.overview}}</p>
         <p>Fecha de lanzamiento: {{detalle.release_date || detalle.first_air_date}}</p>
         <p>Calificación: {{detalle.vote_average.toFixed(1)}}</p>
-        <button class="openModal" (click)="openModal()">Trailer</button>
+        <button class="btn btn-outline-success" type="submit" (click)="openModal()">Trailer</button>
     </div>
-    <div class="genero" >
+    <div class="genero">
         <ul class="listaGenero" *ngFor="let detalleGenero of detalle.genres">
             <li>{{detalleGenero.name}}</li>
         </ul>
     </div>
+</div>
+<div class="fondo">
+    <img [src]="fondoPelicula()" alt="fondo" class="img-fluid">
 </div>
