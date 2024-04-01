@@ -34,7 +34,7 @@ export class TrailersComponent implements OnInit{
 
   private getTrailer(tipo: string): void {
     if (this.movieId && tipo) {
-      const apiCall = tipo === 'pelicula' ? this.api.trailers(this.movieId) : this.api.trailerSerie(this.movieId);
+      const apiCall = tipo === 'movie' ? this.api.trailers(this.movieId) : this.api.trailerSerie(this.movieId);
       apiCall.subscribe(response => {
         let ultimoTrailerKey = null;
         for (let i = response.results.length - 1; i >= 0; i--) {

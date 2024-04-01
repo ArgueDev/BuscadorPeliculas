@@ -11,9 +11,9 @@ export const routes: Routes = [
     .then(m => m.HomePeliculaComponent)},
     {path: 'series', loadComponent: () => import('./pagina/homes/series/series.component')
     .then(m => m.SeriesComponent)},
-    { path: 'trailersPeliculas/:id', component: TrailersComponent, data: { tipo: 'pelicula' } },
+    { path: 'trailersPeliculas/:id', component: TrailersComponent, data: { tipo: 'movie' } },
     { path: 'trailersSeries/:id', component: TrailersComponent, data: { tipo: 'serie' } },
-    { path: 'detallesPeliculas/:id', component: DetallesComponent, data: { tipo: 'pelicula' } },
+    { path: 'detallesPeliculas/:id', component: DetallesComponent, data: { tipo: 'movie' } },
     { path: 'detallesSeries/:id', component: DetallesComponent, data: { tipo: 'serie' } },
     { path: 'buscador', loadComponent: () => import('./pagina/buscador-peliculas/buscador-peliculas.component')
     .then(m => m.BuscadorPeliculasComponent)},

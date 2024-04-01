@@ -65,6 +65,7 @@ bannerApiData(): Observable<any> {
       })
     );
   }
+  
   getDetalle(id: number, mediaType: string): Observable<any> {
     const tipo = mediaType === 'tv' ? 'tv' : 'movie'; // Determinar si el contenido es una película o una serie
     const url = `${environment.url}/${tipo}/${id}?api_key=${environment.apiKey}`;

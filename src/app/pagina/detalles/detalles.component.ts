@@ -31,7 +31,7 @@ export class DetallesComponent implements OnInit {
       const id = +params['id']; // Convertir el ID a número
       const tipo = this.router.snapshot.data['tipo']; // Obtener el tipo de contenido de los datos de la ruta
       if(id && tipo){
-        const apiDetalles = (tipo === 'pelicula') ? this.api.getDetallesPelicula(id) : this.api.getDetallesSerie(id);
+        const apiDetalles = (tipo === 'movie') ? this.api.getDetallesPelicula(id) : this.api.getDetallesSerie(id);
         apiDetalles.subscribe(
           (result: any[]) => {
             this.detalle = result;
