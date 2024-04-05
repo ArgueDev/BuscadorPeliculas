@@ -1,11 +1,15 @@
-
 .carousel-inner {
   position: absolute;
-  width: 100%; /* Ocupa todo el ancho disponible */
-  max-width: 1400px; /* Ajusta el ancho máximo del carrusel si es necesario */
-  height: 550px; /* Establece la altura deseada para el carrusel */
-  top: 0; /* Alinea la parte superior del carousel con la parte superior del viewport */
-  z-index: 1; /* Coloca el carousel detrás del navbar */
+  width: 100%;
+  /* Ocupa todo el ancho disponible */
+  max-width: 1400px;
+  /* Ajusta el ancho máximo del carrusel si es necesario */
+  height: 550px;
+  /* Establece la altura deseada para el carrusel */
+  top: 0;
+  /* Alinea la parte superior del carousel con la parte superior del viewport */
+  z-index: 1;
+  /* Coloca el carousel detrás del navbar */
   overflow: hidden;
 }
 
@@ -16,6 +20,7 @@
   max-height: 100%;
   object-fit: contain;
 }
+
 .carousel-item img {
   width: auto;
   height: auto;
@@ -23,15 +28,18 @@
   max-height: 100%;
   object-fit: contain;
 }
+
 .carousel-item.active img {
   width: auto;
   height: auto;
   max-width: 100%;
-  max-height: 100%; 
+  max-height: 100%;
   object-fit: contain;
 }
+
 .carousel {
-  width: 100%; /* Ajusta el ancho al 100% */
+  width: 100%;
+  /* Ajusta el ancho al 100% */
 }
 
 .gradient-overlay {
@@ -39,10 +47,13 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 80px; /* Altura del degradado, ajusta según necesites */
-  background: linear-gradient(to bottom, rgba(36, 35, 35, 0), rgba(23, 23, 24, 1)); /* Degradado que se desvanece hacia el color de fondo */
+  height: 80px;
+  /* Altura del degradado, ajusta según necesites */
+  background: linear-gradient(to bottom, rgba(36, 35, 35, 0), rgba(23, 23, 24, 1));
+  /* Degradado que se desvanece hacia el color de fondo */
 }
-.carousel-caption{
+
+.carousel-caption {
   margin-bottom: 230px;
 }
 
@@ -58,7 +69,7 @@
 
 .horizontal {
   display: flex;
-  overflow-x: auto;
+  overflow-x: hidden;
   /* Permite el desplazamiento horizontal */
   white-space: nowrap;
   /* Evita que los elementos se rompan en varias líneas */
@@ -69,6 +80,7 @@
   padding: 10px;
   /* Agrega un poco de espacio entre los elementos */
   padding-top: 0px;
+
 }
 
 .imagen {
@@ -78,26 +90,51 @@
   /* Agrega un poco de espacio entre las imágenes */
 }
 
-.proximamente{
+.proximamente {
   color: #ffffff !important;
 
 }
 
-.Popular {
+.Popular, .Action {
   position: relative;
   width: 100%;
   overflow-x: auto;
   white-space: nowrap;
-  padding-bottom: 20px; /* Agrega espacio para el botón de desplazamiento */
-  margin-top: 500px; /* Ajusta la posición de las imágenes */
+  padding-bottom: 20px;
+  /* Agrega espacio para el botón de desplazamiento */
+}
+
+.terror {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-bottom: 20px;
+  /* Agrega espacio para el botón de desplazamiento */
+}
+
+.Tendencias {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-bottom: 20px;
+  /* Agrega espacio para el botón de desplazamiento */
+  margin-top: 500px;
+  /* Ajusta la posición de las imágenes */
+}
+.Peliculas-terror{
+
 }
 
 .scroll-button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  right: 10px; /* Posición del botón */
-  z-index: 1; /* Asegura que esté sobre las imágenes */
+  right: 10px;
+  /* Posición del botón */
+  z-index: 1;
+  /* Asegura que esté sobre las imágenes */
   background: transparent;
   border: none;
   font-size: 24px;
@@ -108,23 +145,29 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  left: 10px; /* Posición del botón */
-  z-index: 1; /* Asegura que esté sobre las imágenes */
+  left: 10px;
+  /* Posición del botón */
+  z-index: 1;
+  /* Asegura que esté sobre las imágenes */
   background: transparent;
   border: none;
   font-size: 24px;
   cursor: pointer;
 }
+
 .arrow {
-  font-size: 32px; /* Tamaño del ícono */
-  color: #333; /* Color del ícono */
-  transition: transform 0.3s ease; /* Transición suave al girar */
+  font-size: 32px;
+  /* Tamaño del ícono */
+  transition: transform 0.3s ease;
+  /* Transición suave al girar */
 }
 
 .arrow:hover {
-  transform: rotate(90deg); /* Gira el ícono al pasar el mouse */
+  transform: rotate(90deg);
+  /* Gira el ícono al pasar el mouse */
 }
-.proximamente{
+
+.proximamente {
   display: flex;
   margin-left: 50px;
   margin-bottom: 0px;
@@ -132,7 +175,8 @@
   font-weight: bold;
   color: #333;
 }
-.tit-proximamente{
+
+.tit-proximamente {
   display: flex;
 
 }

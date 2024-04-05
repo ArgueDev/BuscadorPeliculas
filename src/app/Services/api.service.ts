@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
+import { Observable, forkJoin, map } from 'rxjs';
 import { environment } from '../environment/environment';
 
 @Injectable({
@@ -70,5 +70,79 @@ bannerApiData(): Observable<any> {
     const tipo = mediaType === 'tv' ? 'tv' : 'movie'; // Determinar si el contenido es una película o una serie
     const url = `${environment.url}/${tipo}/${id}?api_key=${environment.apiKey}`;
     return this.http.get<any>(url);
+  }
+
+  buscarTerror(idGenero: string,busqueda: string): Observable<{ title: string, imageUrl: string, id: number, tipo: string }[]> {
+    const peliculasTerrorUrl = `${environment.url}/discover/movie?api_key=${environment.apiKey}&with_genres=${idGenero}&query=${busqueda}`;
+    const seriesTerrorUrl = `${environment.url}/discover/tv?api_key=${environment.apiKey}&with_genres=${idGenero}&query=${busqueda}`;
+  
+    const peliculasObs = this.http.get<any>(peliculasTerrorUrl).pipe(
+      map((response: any) => {
+        const movies = response.results || [];
+        return movies.map((movie: any) => ({
+          id: movie.id,
+          title: movie.title,
+          imageUrl: movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : '',
+          tipo: 'movie'
+        }));
+      })
+    );
+  
+    const seriesObs = this.http.get<any>(seriesTerrorUrl).pipe(
+      map((response: any) => {
+        const series = response.results || [];
+        return series.map((serie: any) => ({
+          id: serie.id,
+          title: serie.name,
+          imageUrl: serie.poster_path ? `https://image.tmdb.org/t/p/w500${serie.poster_path}` : '',
+          tipo: 'tv'
+        }));
+      })
+    );
+  
+    // Combinar las observables de películas y series para obtener un solo flujo de datos
+    return forkJoin([peliculasObs, seriesObs]).pipe(
+      map(([peliculas, series]) => {
+        // Combinar resultados de películas y series en un solo arreglo
+        return [...peliculas, ...series];
+      })
+    );
+  }
+  
+  buscarAction(idGenero: string,busqueda: string): Observable<{ title: string, imageUrl: string, id: number, tipo: string }[]> {
+    const peliculasTerrorUrl = `${environment.url}/discover/movie?api_key=${environment.apiKey}&with_genres=${idGenero}&query=${busqueda}`;
+    const seriesTerrorUrl = `${environment.url}/discover/tv?api_key=${environment.apiKey}&with_genres=${idGenero}&query=${busqueda}`;
+  
+    const peliculasObs = this.http.get<any>(peliculasTerrorUrl).pipe(
+      map((response: any) => {
+        const movies = response.results || [];
+        return movies.map((movie: any) => ({
+          id: movie.id,
+          title: movie.title,
+          imageUrl: movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : '',
+          tipo: 'movie'
+        }));
+      })
+    );
+  
+    const seriesObs = this.http.get<any>(seriesTerrorUrl).pipe(
+      map((response: any) => {
+        const series = response.results || [];
+        return series.map((serie: any) => ({
+          id: serie.id,
+          title: serie.name,
+          imageUrl: serie.poster_path ? `https://image.tmdb.org/t/p/w500${serie.poster_path}` : '',
+          tipo: 'tv'
+        }));
+      })
+    );
+  
+    // Combinar las observables de películas y series para obtener un solo flujo de datos
+    return forkJoin([peliculasObs, seriesObs]).pipe(
+      map(([peliculas, series]) => {
+        // Combinar resultados de películas y series en un solo arreglo
+        return [...peliculas, ...series];
+      })
+    );
   }
 }
