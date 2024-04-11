@@ -3,13 +3,14 @@ import { BuscadorPeliculasService } from '../../../Services/api.service';
 import { CommonModule } from '@angular/common';
 import { timer } from 'rxjs';
 import { Route, Router } from '@angular/router';
+import { FooterComponent } from "../../footer/footer.component";
 
 @Component({
-  selector: 'app-inicio',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './inicio.component.html',
-  styleUrl: './inicio.component.css'
+    selector: 'app-inicio',
+    standalone: true,
+    templateUrl: './inicio.component.html',
+    styleUrl: './inicio.component.css',
+    imports: [CommonModule, FooterComponent]
 })
 export class InicioComponent implements OnInit {
 
