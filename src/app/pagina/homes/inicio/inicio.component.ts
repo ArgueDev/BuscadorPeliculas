@@ -122,6 +122,10 @@ export class InicioComponent implements OnInit {
     });
   }
 
+  detalle(tipo: string, id: number) {
+    this.router.navigate(['detalle', tipo, id]);
+  }
+
   detallePelicula(id: number) {
     this.router.navigate(['detallesPeliculas', id]);
   }

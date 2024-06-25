@@ -31,7 +31,7 @@
     </div>
     <div class="horizontal" #container>
       <ng-container *ngFor="let proximos of tendencias">
-        <div class="imagen" (click)="detallePelicula(proximos.id)">
+        <div class="imagen" (click)="detalle(proximos.media_type, proximos.id)">
           <img class="imaPopular" src="https://image.tmdb.org/t/p/original/{{ proximos.poster_path }}" alt="">
         </div>
       </ng-container>
