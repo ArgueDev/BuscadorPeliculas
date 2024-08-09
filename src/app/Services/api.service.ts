@@ -2,14 +2,33 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, forkJoin, map } from 'rxjs';
 import { environment } from '../environment/environment';
+import { publicaciones } from '../environment/publicaciones';
+import { Comentario } from '../Models/Comentario';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BuscadorPeliculasService {
+  private apiUrl: string = publicaciones.apiUrl;
 
   constructor(private http: HttpClient) { }
- 
+
+  getComentarios(): Observable<Comentario[]> {
+    return this.http.get<Comentario[]>(this.apiUrl);
+  }
+
+  agregarComentario(comentario: Comentario): Observable<Comentario> {
+    return this.http.post<Comentario>(this.apiUrl, comentario);
+  }
+
+  actualizarComentario(comentario: Comentario): Observable<Comentario> {
+    return this.http.put<Comentario>(`${this.apiUrl}/${comentario.id}`, comentario);
+  }
+
+  eliminarComentario(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+  
 bannerApiData(): Observable<any> {
     return this.http.get(`${environment.url}/trending/all/week?api_key=${environment.apiKey}`);
   }
